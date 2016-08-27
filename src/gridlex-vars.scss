@@ -53,34 +53,135 @@ $breakpoint-values: map-values($breakpoints);
         min-width: 100% / $default;
     }
 
-    //.#{$gridName} > .mod_full {
-    //    flex-basis: 100%;
-    //    flex-grow: 1;
-    //    min-width: 100%;
-    //}
-
-//    .#{$gl-colName}-full {
-//    flex-basis: 100% !important;
-//    max-width: 100% !important;
-//}
-
-    //.mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
-    //.mod_shrink[class*="#{$gridName}-#{$breakpointName}-"] > .#{$gl-colName},
-    //[class*="#{$gridName}-"] > .mod_shrink.#{$gl-colName},
-    //[class*="#{$gridName}-#{$breakpointName}-"] > .mod_shrink.#{$gl-colName}{
-    //    flex-basis: 100% / $default;
-    //    flex-grow: 0;
-    //    max-width: 100% / $default;
-    //}
-
     @for $i from 1 through $columns {
 
         .#{$gridName}-#{$i} > .#{$gl-colName},
         .#{$gridName}-#{$breakpointName}-#{$i} > .#{$gl-colName} {
             flex-basis: 100% / $i;
-            //flex-grow: 1;
-            //min-width: 100% / $i;
             max-width: 100% / $i;
+        }
+    }
+
+    .#{$gridName},
+    [class*="#{$gl-gridName}-"] {
+
+        &.mod_#{$breakpointName}-removeGutter {
+            margin: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding: 0;
+            }
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-horizontal {
+            margin-left: 0;
+            margin-right: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-vertical {
+            margin-top: 0;
+            margin-bottom: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-left {
+            margin-left: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding-left: 0;
+            }
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-right {
+            margin-right: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding-right: 0;
+            }
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-top {
+            margin-top: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding-top: 0;
+            }
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-bottom {
+            margin-top: 0;
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                padding-bottom: 0;
+            }
+        }
+
+        &.mod_left {
+
+        }
+
+        &.mod_#{$breakpointName}-center {
+            justify-content: center;
+        }
+
+        &.mod_right {
+
+        }
+
+        &.mod_top {
+
+        }
+
+        &.mod_middle {
+
+        }
+
+        &.mod_bottom {
+
+        }
+
+        &.mod_reverse {
+
+        }
+
+        &.mod_column {
+
+        }
+
+        &.mod_column-reverse {
+
+        }
+
+        &.mod_spaceBetween {
+
+        }
+
+        &.mod_spaceAround {
+
+        }
+
+        &.mod_#{$breakpointName}-equalHeight {
+
+            > .#{$gl-colName},
+            > [class*="#{$gl-colName}"] {
+                display: flex;
+            }
         }
     }
 }
@@ -116,6 +217,62 @@ $breakpoint-values: map-values($breakpoints);
                 //min-width: 100% / (($columns / $i));
                 max-width: 100% / (($columns / $i));
             }
+        }
+    }
+
+    .#{$colName},
+    [class*="#{$colName}-"] {
+
+        &.mod_#{$breakpointName}-removeGutter {
+            padding: 0;
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-left {
+            padding-left: 0;
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-right {
+            padding-right: 0;
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-top {
+            padding-top: 0;
+        }
+
+        &.mod_#{$breakpointName}-removeGutter-bottom {
+            padding-bottom: 0;
+        }
+
+        &.mod_top {
+
+        }
+
+        &.mod_middle {
+
+        }
+
+        &.mod_bottom {
+
+        }
+
+        &.mod_#{$breakpointName}-right {
+            margin-left: auto;
+        }
+
+        &.mod_#{$breakpointName}-left {
+            margin-right: auto;
+        }
+
+        &.mod_first {
+
+        }
+
+        &.mod_last {
+
+        }
+
+        &.mod_#{$breakpointName}-grow {
+            flex: 1;
         }
     }
 }
