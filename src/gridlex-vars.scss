@@ -64,22 +64,23 @@ $breakpoint-values: map-values($breakpoints);
 //    max-width: 100% !important;
 //}
 
-    .mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
-    .mod_shrink[class*="#{$gridName}-#{$breakpointName}-"] > .#{$gl-colName},
-    [class*="#{$gridName}-"] > .mod_shrink.#{$gl-colName},
-    [class*="#{$gridName}-#{$breakpointName}-"] > .mod_shrink.#{$gl-colName}{
-        flex-basis: 100% / $default;
-        flex-grow: 0;
-        max-width: 100% / $default;
-    }
+    //.mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
+    //.mod_shrink[class*="#{$gridName}-#{$breakpointName}-"] > .#{$gl-colName},
+    //[class*="#{$gridName}-"] > .mod_shrink.#{$gl-colName},
+    //[class*="#{$gridName}-#{$breakpointName}-"] > .mod_shrink.#{$gl-colName}{
+    //    flex-basis: 100% / $default;
+    //    flex-grow: 0;
+    //    max-width: 100% / $default;
+    //}
 
     @for $i from 1 through $columns {
 
         .#{$gridName}-#{$i} > .#{$gl-colName},
         .#{$gridName}-#{$breakpointName}-#{$i} > .#{$gl-colName} {
             flex-basis: 100% / $i;
-            flex-grow: 1;
-            min-width: 100% / $i;
+            //flex-grow: 1;
+            //min-width: 100% / $i;
+            max-width: 100% / $i;
         }
     }
 }
@@ -95,8 +96,9 @@ $breakpoint-values: map-values($breakpoints);
         > [class*='col-'],
         > [class*='col_#{$breakpointName}-'] {
             flex-basis: 100% / $default;
-            flex-grow: 1;
-            min-width: 100% / $default;
+            //flex-grow: 1;
+            //min-width: 100% / $default;
+            max-width: 100% / $default;
         }
 
     }
@@ -110,8 +112,9 @@ $breakpoint-values: map-values($breakpoints);
             > .#{$colName}-#{$i},
             > .#{$colName}-#{$breakpointName}-#{$i} {
                 flex-basis: 100% / (($columns / $i));
-                flex-grow: 1;
-                min-width: 100% / (($columns / $i));
+                //flex-grow: 1;
+                //min-width: 100% / (($columns / $i));
+                max-width: 100% / (($columns / $i));
             }
         }
     }
@@ -127,10 +130,12 @@ $breakpoint-values: map-values($breakpoints);
 
         @for $i from 0 through $columns - 1 {
             > .mod_#{$breakpointName}-push-left-#{$i} {
+            //> .mod_#{$breakpointName}-push-left-#{$i} {
                 margin-left: (100% / (($columns / $i)));
             }
 
             > .mod_#{$breakpointName}-push-right-#{$i} {
+            //> .mod_push-right-#{$i} {
                 margin-right: (100% / (($columns / $i)));
             }
         }
