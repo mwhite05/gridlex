@@ -113,59 +113,32 @@
     }
 }
 
-/************************
-    GRID BY NUMBER
-*************************/
-@include makeGridByNumber(#{$gl-gridName}, $columns);
-/*
-@media #{$gl-mq-expanded}{
-    @include makeGridByNumber(_#{$gl-vastName}, $columns);
+// Base level grid when no specific breakpoint defined
+//@include makeGridByNumber(#{$gl-gridName});
+
+@each $breakpointName, $breakpoint in $breakpoints {
+    $width: map-get($breakpoint, width);
+    $default: map-get($breakpoint, default);
+    $columns: map-get($breakpoint, columns);
+    $widthEm: 1em * ($width / $root-font-size);
+
+    // =================================================
+    /*     GRID MEDIA QUERY #{$gl-gridName}_#{$breakpointName}    */
+    // =================================================
+    @media only screen and (min-width: #{$widthEm}) {
+        // =================================================
+        /*     GRID BY NUMBER #{$gl-gridName}_#{$breakpointName}    */
+        // =================================================
+        @include makeGridByNumber($gl-gridName, $breakpointName, $columns, $default);
+
+        // =================================
+        /*     COLUMNS #{$gl-gridName}_#{$breakpointName}    */
+        // =================================
+        @include makeCol($gl-gridName, $breakpointName, $gl-colName, $columns, $default);
+
+        // =================================
+        /*     OFFSETS #{$gl-gridName}_#{$breakpointName}    */
+        // =================================
+        @include makeOff($gl-gridName, $breakpointName, $gl-offName, $columns, $default);
+    }
 }
-
-@media #{$gl-mq-expanded}{
-    @include makeGridByNumber(_#{$gl-expandedName}, $columns);
-}
-
-@media #{$gl-mq-large}{
-    @include makeGridByNumber(_#{$gl-largeName}, $columns);
-}
-
-@media #{$gl-mq-medium}{
-    @include makeGridByNumber(_#{$gl-mediumName}, $columns);
-}
-
-@media #{$gl-mq-small}{
-    @include makeGridByNumber(_#{$gl-smallName}, $columns);
-}
-
-@media #{$gl-mq-micro}{
-    @include makeGridByNumber(_#{$gl-microName}, $columns);
-}*/
-
-/************************
-    COLS SIZES
-*************************/
-@include makeCol(#{$gl-colName}, $columns);
-@include makeOff(off, $columns);
-/*
-
-@media #{$gl-mq-small}{
-    @include makeCol(_xs, $columns);
-    @include makeOff(_xs, $columns);
-}
-
-@media #{$gl-mq-expanded}{
-    @include makeCol(_lg, $columns);
-    @include makeOff(_lg, $columns);
-}
-
-@media #{$gl-mq-large}{
-    @include makeCol(_md, $columns);
-    @include makeOff(_md, $columns);
-}
-
-@media #{$gl-mq-medium}{
-    @include makeCol(_sm, $columns);
-    @include makeOff(_sm, $columns);
-}
-*/

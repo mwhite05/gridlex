@@ -2,37 +2,32 @@
 //     FEEL FREE TO EDIT BELOW THIS LINE
 // =========================================
 
-// HOW MANY COLUMNS IN YOUR GRID?
-$columns: 12;
+// FONT SIZE BASE FOR YOUR GRID
+$root-font-size: 16; // used in em calculations
 
 // <editor-fold desc="BREAKPOINTS">
-$root-font-size: 16; // used in em calculations
-$bp-micro: 320; // pixels - converted to ems
-$bp-small: 640; // pixels - converted to ems
-$bp-medium: 768; // pixels - converted to ems
-$bp-large: 1024; // pixels - converted to ems
-$bp-expanded: 1440; // pixels - converted to ems
+// Set each breakpoint key as the CSS name you want to use for that breakpoint (e.g. mobile, tablet, desktop, etc.)
+// Set each breakpoint value as a raw number (DO NO INCLUDE A UNIT e.g use 320, not 320px or 320em)
+//$breakpoints: (
+//    micro: (width: 320, columns: 2, default: 1), // Max 2 columns if set explicitly. If not specified, defaults to 1 column max.
+//    small: (width: 640, columns: 4, default: 2), // Max 4 columns if set explicitly. If not specified, defaults to 1 column max.
+//    medium: (width: 768, columns: 6, default: 6), // Max 6 columns if set explicitly. If not specified, defaults to 6 column max.
+//    large: (width: 1024, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
+//    expanded: (width: 1440, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
+//);
+$breakpoints: (
+    mobile: (width: 320, columns: 2, default: 1), // Max 2 columns if set explicitly. If not specified, defaults to 1 column max.
+    tablet: (width: 640, columns: 4, default: 2), // Max 4 columns if set explicitly. If not specified, defaults to 1 column max.
+    desktop: (width: 768, columns: 6, default: 6), // Max 6 columns if set explicitly. If not specified, defaults to 6 column max.
+    desktop-hd: (width: 1024, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
+    cinema: (width: 1440, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
+);
 // </editor-fold>
 
 // <editor-fold desc="GRID SYSTEM CLASS NAMES">
 $gl-gridName: grid !default;
 $gl-colName: col !default;
-// Default Breakpoint Names
-$gl-microName: micro;
-$gl-smallName: small;
-$gl-mediumName: medium;
-$gl-largeName: large;
-$gl-expandedName: expanded;
-$gl-vastName: vast;
-// Common Alternative Breakpoint Names
-/*
-$gl-microName: micro;
-$gl-smallName: mobile;
-$gl-mediumName: tablet;
-$gl-largeName: desktop;
-$gl-expandedName: desktop-hd;
-$gl-vastName: cinema;
-*/
+$gl-offName: off !default;
 // </editor-fold>
 
 // <editor-fold desc="GUTTERS">
@@ -45,34 +40,20 @@ $gl-col-bottom: $gl-gutter !default;
 //     WE RECOMMEND THAT YOU DO NO EDIT BELOW THIS LINE
 // ========================================================
 
-// <editor-fold desc="DERIVATIVE BREAKPOINT VARIABLES">
-$bp-micro-min: 0;
-$bp-micro-max: ($bp-micro / $root-font-size)em;;
-$bp-small-min: (($bp-micro + 1) / $root-font-size)em;
-$bp-small-max: ($bp-small / $root-font-size)em;;
-$bp-medium-min: (($bp-small + 1) / $root-font-size)em;
-$bp-medium-max: ($bp-medium / $root-font-size)em;
-$bp-large-min: (($bp-medium + 1) / $root-font-size)em;
-$bp-large-max: ($bp-large / $root-font-size)em;
-$bp-expanded-min: (($bp-large + 1) / $root-font-size)em;
-$bp-expanded-max: ($bp-expanded / $root-font-size)em;
-$bp-vast-min: (($bp-expanded + 1) / $root-font-size)em;
-// </editor-fold>
-
 // <editor-fold desc="MEDIA QUERIES FOR BREAKPOINTS">
-$gl-mq-micro: "screen and (min-width: #{$bp-micro-min})" !default;
-$gl-mq-small: "screen and (min-width: #{$bp-small-min})" !default;
-$gl-mq-medium: "screen and (min-width: #{$bp-medium-min})" !default;
-$gl-mq-large: "screen and (min-width: #{$bp-large-min})" !default;
-$gl-mq-expanded: "screen and (mix-width: #{$bp-expanded-min})" !default;
-$gl-mq-vast: "screen and (mix-width: #{$bp-vast-min})" !default;
 // </editor-fold>
 
 // Function to generate the grid by number
-@mixin makeGridByNumber($grid, $columns) {
+@mixin makeGridByNumber($gridName, $breakpointName, $columns, $default) {
+    // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
+    [class*="#{$gridName}-"] > .#{$gl-colName},
+    [class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName} {
+        width: 100% / $default;
+    }
+
     @for $i from 1 through $columns {
-        [class*="#{$grid}-#{$i}"] > .#{$gl-colName},
-        [class*="#{$grid}-#{$i}"] > [class*='#{$gl-colName}-'] {
+        .#{$gridName}-#{$i} > .#{$gl-colName},
+        .#{$gridName}_#{$breakpointName}-#{$i} > #{$gl-colName} {
             flex-basis: 100% / $i;
             max-width: 100% / $i;
         }
@@ -80,11 +61,25 @@ $gl-mq-vast: "screen and (mix-width: #{$bp-vast-min})" !default;
 }
 
 // Function to generate the grid by columns
-@mixin makeCol($col, $columns) {
-    .#{$gl-gridName} {
+@mixin makeCol($gridName, $breakpointName, $colName, $columns, $default) {
+
+    //.#{$gridName} > [class*='#{$gl-colName}-'],
+    //.#{$gridName}_#{$breakpointName} > [class*='#{$gl-colName}-']
+
+    .#{$gridName},
+    .#{$gridName}_#{$breakpointName} {
+
+
+        // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
+
+        > [class*='col-'] {
+            width: 100% / $default;
+        }
 
         @for $i from 1 through $columns {
-            > [class*="#{$col}-#{$i}"] {
+
+            > .#{$colName}-#{$i},
+            > .#{$colName}_#{$breakpointName}-#{$i} {
                 flex-basis: 100% / (($columns / $i));
                 max-width: 100% / (($columns / $i));
             }
@@ -93,19 +88,19 @@ $gl-mq-vast: "screen and (mix-width: #{$bp-vast-min})" !default;
 }
 
 // Function to generate the offset
-@mixin makeOff($off, $columns) {
+@mixin makeOff($gridName, $breakpointName, $offName, $columns, $default) {
 
-    .#{$gl-gridName},
-    [class*="#{$gl-gridName}-"] {
+    .#{$gridName},
+    [class*="#{$gridName}-"] {
+
+        // No special default here - if the push amount is not recognized then it will be zero
 
         @for $i from 0 through $columns - 1 {
-            > .push-left-#{off}-#{$i},
-            > [data-push-left*="#{$off}-#{$i}"] {
+            > .push-left-#{$offName}-#{$i} {
                 margin-left: (100% / (($columns / $i)));
             }
 
-            > .push-right-#{off}-#{$i},
-            > [data-push-right*="#{$off}-#{$i}"] {
+            > .push-right-#{$offName}-#{$i} {
                 margin-right: (100% / (($columns / $i)));
             }
         }
