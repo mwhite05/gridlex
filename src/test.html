@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gridlex - Just a Flexbox Grid System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/docs/demo/normalize.css">
+    <link rel="stylesheet" href="gridlex.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel='stylesheet' type='text/css'>
+    <meta name="apple-mobile-web-app-title" content="Gridlex">
+    <meta name="application-name" content="Gridlex">
+    <meta name="msapplication-TileColor" content="#4682b4">
+    <meta name="msapplication-TileImage" content="fav/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        html{  }
+        body{ margin: 0; padding: 16px; font-size: 16px; font-family: 'Open Sans',sans-serif; color: #4A4A4A; background-color: #F9FAFC; }
+        *{ box-sizing: border-box; }
+        *::after,*::before{ box-sizing: border-box; }
+        h1{ font-size: 2rem; }
+        h2{ font-size: 1.4rem; color: steelblue; }
+        h3{ font-size: 1.1rem; }
+        ul{ padding:0; list-style-position: inside; }
+        li{ margin: 0; }
+
+        [class*="grid-"] > .col,
+        .grid > [class*="col-"] {
+            background-color: #ffffff;
+            color: #788991;
+            text-align: center;
+            border: 1px solid #DADFE1;
+        }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="col-10 push-left-off-2">
+        <p>grid &gt; col-10 &gt; push-left-off-2</p>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="grid">
+    <div class="col-7 grid-3">
+        <div class="col"><p>grid &gt; col-7 &gt; grid-3</p></div>
+        <div class="col"><p>grid &gt; col-7 &gt; grid-3</p></div>
+        <div class="col"><p>grid &gt; col-7 &gt; grid-3</p></div>
+    </div>
+    <div class="col-5"><p>grid &gt; col-5</p></div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="grid-2">
+    <div class="col grid-3">
+        <div class="col"><p>grid-2 &gt; grid-3</p></div>
+        <div class="col"><p>grid-2 &gt; grid-3</p></div>
+        <div class="col"><p>grid-2 &gt; grid-3</p></div>
+    </div>
+    <div class="col"><p>grid-2</p></div>
+</div>
+
+<br>
+<br>
+<br>
+
+    <div class="grid-1">
+        <div class="col"><p>grid-1</p></div>
+    </div>
+    <div class="grid-2">
+        <div class="col"><p>grid-2</p></div>
+        <div class="col"><p>grid-2</p></div>
+    </div>
+    <div class="grid-3">
+        <div class="col"><p>grid-3</p></div>
+        <div class="col"><p>grid-3</p></div>
+        <div class="col"><p>grid-3</p></div>
+    </div>
+    <div class="grid-4">
+        <div class="col"><p>grid-4</p></div>
+        <div class="col"><p>grid-4</p></div>
+        <div class="col"><p>grid-4</p></div>
+        <div class="col"><p>grid-4</p></div>
+    </div>
+    <div class="grid-5">
+        <div class="col"><p>grid-5</p></div>
+        <div class="col"><p>grid-5</p></div>
+        <div class="col"><p>grid-5</p></div>
+        <div class="col"><p>grid-5</p></div>
+        <div class="col"><p>grid-5</p></div>
+    </div>
+    <div class="grid-6">
+        <div class="col"><p>grid-6</p></div>
+        <div class="col"><p>grid-6</p></div>
+        <div class="col"><p>grid-6</p></div>
+        <div class="col"><p>grid-6</p></div>
+        <div class="col"><p>grid-6</p></div>
+        <div class="col"><p>grid-6</p></div>
+    </div>
+    <div class="grid-7">
+        <div class="col"><p>grid-7</p></div>
+        <div class="col"><p>grid-7</p></div>
+        <div class="col"><p>grid-7</p></div>
+        <div class="col"><p>grid-7</p></div>
+        <div class="col"><p>grid-7</p></div>
+        <div class="col"><p>grid-7</p></div>
+        <div class="col"><p>grid-7</p></div>
+    </div>
+    <div class="grid-8">
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+        <div class="col"><p>grid-8</p></div>
+    </div>
+    <div class="grid-9">
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+        <div class="col"><p>grid-9</p></div>
+    </div>
+    <div class="grid-10">
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+        <div class="col"><p>grid-10</p></div>
+    </div>
+    <div class="grid-11">
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+        <div class="col"><p>grid-11</p></div>
+    </div>
+    <div class="grid-12">
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+        <div class="col"><p>grid-12</p></div>
+    </div>
+</body>
+</html>
