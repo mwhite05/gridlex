@@ -15,7 +15,7 @@
 
     <style>
         html{  }
-        body{ margin: 0; padding: 16px; font-size: 16px; font-family: 'Open Sans',sans-serif; color: #4A4A4A; background-color: #F9FAFC; }
+        body{ margin: 0; padding: 0; font-size: 16px; font-family: 'Open Sans',sans-serif; color: #4A4A4A; background-color: #F9FAFC; }
         *{ box-sizing: border-box; }
         *::after,*::before{ box-sizing: border-box; }
         h1{ font-size: 2rem; }
@@ -34,21 +34,27 @@
     </style>
 </head>
 <body>
-<p>You should view this page at a range of sizes based on your breakpoints. This page is designed to demonstrate the default breakpoints
-for which the primary features can be seen by checking in these widths:</p>
-<ul>
-    <li>1440+</li>
-    <li>1200</li>
-    <li>1000</li>
-    <li>800</li>
-    <li>760</li>
-    <li>600</li>
-    <li>400</li>
-</ul>
+<div class="grid">
+    <div class="col-10 mod_shrink mod_desktop-hd-push-left-1">
+        <p>You should view this page at a range of sizes based on your breakpoints. This page is designed to demonstrate the default breakpoints
+        for which the primary features can be seen by checking in these widths:</p>
+    </div>
+    <div class="col-10 mod_shrink mod_desktop-hd-push-left-1">
+        <ul>
+            <li>1440+</li>
+            <li>1200</li>
+            <li>1000</li>
+            <li>800</li>
+            <li>760</li>
+            <li>600</li>
+            <li>400</li>
+        </ul>
+    </div>
+</div>
 
 <div class="grid">
-    <div class="col-10 push-left-off-2">
-        <p>grid &gt; col-10 &gt; push-left-off-2</p>
+    <div class="col-10 mod_desktop-push-left-2">
+        <p>grid &gt; col-10 &gt; mod_push-left-2</p>
     </div>
 </div>
 
@@ -57,7 +63,7 @@ for which the primary features can be seen by checking in these widths:</p>
 <br>
 
 <div class="grid">
-    <div class="col-7 grid-3 grid_mobile-2">
+    <div class="col-7 grid-3 grid_mobile-2 col_desktop-6 mod_removeGutter">
         <div class="col"><p>grid &gt; col-7 &gt; grid-3 / grid_mobile-2</p></div>
         <div class="col"><p>grid &gt; col-7 &gt; grid-3 / grid_mobile-2</p></div>
         <div class="col"><p>grid &gt; col-7 &gt; grid-3 / grid_mobile-2</p></div>
@@ -70,7 +76,7 @@ for which the primary features can be seen by checking in these widths:</p>
 <br>
 
 <div class="grid-2">
-    <div class="col grid-3">
+    <div class="col grid-3 mod_removeGutter-horizontal">
         <div class="col"><p>grid-2 &gt; grid-3</p></div>
         <div class="col"><p>grid-2 &gt; grid-3</p></div>
         <div class="col"><p>grid-2 &gt; grid-3</p></div>

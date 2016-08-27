@@ -9,7 +9,6 @@
     box-sizing: border-box;
     display: flex;
     flex-flow: row wrap;
-    margin: 0 (-$gl-gutter/2);
 }
 
 .#{$gl-colName},
@@ -19,14 +18,182 @@
     padding: 0 ($gl-gutter/2) $gl-col-bottom;
 }
 
-.#{$gl-colName} {
-    flex: 1 1 0%;
-}
+//.#{$gl-colName}-full {
+//    flex-basis: 100% !important;
+//    max-width: 100% !important;
+//}
+
+//.#{$gl-colName} {
+//    flex: 1 1 0;
+//}
 
 .#{$gl-gridName}.#{$gl-colName},
 .#{$gl-gridName}[class*="#{$gl-colName}-"] {
     margin: 0;
     padding: 0;
+}
+
+.#{$gl-gridName},
+[class*="#{$gl-gridName}-"] {
+
+    &.mod_removeGutter {
+        margin: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding: 0;
+        }
+    }
+
+    &.mod_removeGutter-horizontal {
+        margin-left: 0;
+        margin-right: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    &.mod_removeGutter-vertical {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    &.mod_removeGutter-left {
+        margin-left: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding-left: 0;
+        }
+    }
+
+    &.mod_removeGutter-right {
+        margin-right: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding-right: 0;
+        }
+    }
+
+    &.mod_removeGutter-top {
+        margin-top: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding-top: 0;
+        }
+    }
+
+    &.mod_removeGutter-bottom {
+        margin-top: 0;
+
+        > .#{$gl-colName},
+        > [class*="#{$gl-colName}"] {
+            padding-bottom: 0;
+        }
+    }
+
+    &.mod_left {
+
+    }
+
+    &.mod_center {
+
+    }
+
+    &.mod_right {
+
+    }
+
+    &.mod_top {
+
+    }
+
+    &.mod_middle {
+
+    }
+
+    &.mod_bottom {
+
+    }
+
+    &.mod_reverse {
+
+    }
+
+    &.mod_column {
+
+    }
+
+    &.mod_column-reverse {
+
+    }
+
+    &.mod_spaceBetween {
+
+    }
+
+    &.mod_spaceAround {
+
+    }
+
+    &.mod_heightMatch {
+
+    }
+}
+
+.#{$gl-colName},
+[class*="#{$gl-colName}-"] {
+
+    &.mod_removeGutter {
+        padding: 0;
+    }
+
+    &.mod_removeGutter-left {
+        padding-left: 0;
+    }
+
+    &.mod_removeGutter-right {
+        padding-right: 0;
+    }
+
+    &.mod_removeGutter-top {
+        padding-top: 0;
+    }
+
+    &.mod_removeGutter-bottom {
+        padding-bottom: 0;
+    }
+
+    &.mod_top {
+
+    }
+
+    &.mod_middle {
+
+    }
+
+    &.mod_bottom {
+
+    }
+
+    &.mod_first {
+
+    }
+
+    &.mod_last {
+
+    }
 }
 
 /************************
@@ -113,14 +280,17 @@
     }
 }
 
-// Base level grid when no specific breakpoint defined
-//@include makeGridByNumber(#{$gl-gridName});
-
 @each $breakpointName, $breakpoint in $breakpoints {
     $width: map-get($breakpoint, width);
     $default: map-get($breakpoint, default);
     $columns: map-get($breakpoint, columns);
     $widthEm: 1em * ($width / $root-font-size);
+
+    .#{$gl-gridName} > .mod_shrink[class*="#{$gl-colName}-"] {
+        flex-basis: 100% / $default;
+        flex-grow: 0;
+        max-width: 100% / $default;
+    }
 
     // =================================================
     /*     GRID MEDIA QUERY #{$gl-gridName}_#{$breakpointName}    */

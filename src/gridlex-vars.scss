@@ -31,7 +31,7 @@ $gl-offName: off !default;
 // </editor-fold>
 
 // <editor-fold desc="GUTTERS">
-$gl-gutter: 0em !default; // Total
+$gl-gutter: 2em !default; // Total
 $gl-col-bottom: $gl-gutter !default;
 // </editor-fold>
 
@@ -52,6 +52,17 @@ $gl-col-bottom: $gl-gutter !default;
         flex-grow: 1;
         min-width: 100% / $default;
     }
+
+    //.#{$gridName} > .mod_full {
+    //    flex-basis: 100%;
+    //    flex-grow: 1;
+    //    min-width: 100%;
+    //}
+
+//    .#{$gl-colName}-full {
+//    flex-basis: 100% !important;
+//    max-width: 100% !important;
+//}
 
     .mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
     .mod_shrink[class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName},
@@ -80,15 +91,19 @@ $gl-col-bottom: $gl-gutter !default;
     [class*="#{$gridName}-"],
     .#{$gridName}_#{$breakpointName} {
 
-
         // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
-
         > [class*='col-'],
         > [class*='col_#{$breakpointName}-'] {
             flex-basis: 100% / $default;
             flex-grow: 1;
             min-width: 100% / $default;
         }
+
+    }
+
+    .#{$gridName},
+    //[class*="#{$gridName}-"],
+    .#{$gridName}_#{$breakpointName} {
 
         @for $i from 1 through $columns {
 
@@ -111,11 +126,11 @@ $gl-col-bottom: $gl-gutter !default;
         // No special default here - if the push amount is not recognized then it will be zero
 
         @for $i from 0 through $columns - 1 {
-            > .push-left-#{$offName}-#{$i} {
+            > .mod_#{$breakpointName}-push-left-#{$i} {
                 margin-left: (100% / (($columns / $i)));
             }
 
-            > .push-right-#{$offName}-#{$i} {
+            > .mod_#{$breakpointName}-push-right-#{$i} {
                 margin-right: (100% / (($columns / $i)));
             }
         }
