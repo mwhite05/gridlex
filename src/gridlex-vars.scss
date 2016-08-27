@@ -54,7 +54,9 @@ $gl-col-bottom: $gl-gutter !default;
     }
 
     .mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
-    .mod_shrink[class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName} {
+    .mod_shrink[class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName},
+    [class*="#{$gridName}-"] > .mod_shrink.#{$gl-colName},
+    [class*="#{$gridName}_#{$breakpointName}-"] > .mod_shrink.#{$gl-colName}{
         flex-basis: 100% / $default;
         flex-grow: 0;
         max-width: 100% / $default;
@@ -73,9 +75,6 @@ $gl-col-bottom: $gl-gutter !default;
 
 // Function to generate the grid by columns
 @mixin makeCol($gridName, $breakpointName, $colName, $columns, $default) {
-
-    //.#{$gridName} > [class*='#{$gl-colName}-'],
-    //.#{$gridName}_#{$breakpointName} > [class*='#{$gl-colName}-']
 
     .#{$gridName},
     [class*="#{$gridName}-"],

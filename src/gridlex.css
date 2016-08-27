@@ -105,7 +105,9 @@
   }
 
   .mod_shrink[class*="grid-"] > .col,
-  .mod_shrink[class*="grid_mobile-"] > .col {
+  .mod_shrink[class*="grid_mobile-"] > .col,
+  [class*="grid-"] > .mod_shrink.col,
+  [class*="grid_mobile-"] > .mod_shrink.col {
     flex-basis: 100%;
     flex-grow: 0;
     max-width: 100%;
@@ -186,7 +188,9 @@
   }
 
   .mod_shrink[class*="grid-"] > .col,
-  .mod_shrink[class*="grid_tablet-"] > .col {
+  .mod_shrink[class*="grid_tablet-"] > .col,
+  [class*="grid-"] > .mod_shrink.col,
+  [class*="grid_tablet-"] > .mod_shrink.col {
     flex-basis: 50%;
     flex-grow: 0;
     max-width: 50%;
@@ -317,7 +321,9 @@
   }
 
   .mod_shrink[class*="grid-"] > .col,
-  .mod_shrink[class*="grid_desktop-"] > .col {
+  .mod_shrink[class*="grid_desktop-"] > .col,
+  [class*="grid-"] > .mod_shrink.col,
+  [class*="grid_desktop-"] > .mod_shrink.col {
     flex-basis: 16.66667%;
     flex-grow: 0;
     max-width: 16.66667%;
@@ -498,7 +504,9 @@
   }
 
   .mod_shrink[class*="grid-"] > .col,
-  .mod_shrink[class*="grid_desktop-hd-"] > .col {
+  .mod_shrink[class*="grid_desktop-hd-"] > .col,
+  [class*="grid-"] > .mod_shrink.col,
+  [class*="grid_desktop-hd-"] > .mod_shrink.col {
     flex-basis: 8.33333%;
     flex-grow: 0;
     max-width: 8.33333%;
@@ -829,7 +837,9 @@
   }
 
   .mod_shrink[class*="grid-"] > .col,
-  .mod_shrink[class*="grid_cinema-"] > .col {
+  .mod_shrink[class*="grid_cinema-"] > .col,
+  [class*="grid-"] > .mod_shrink.col,
+  [class*="grid_cinema-"] > .mod_shrink.col {
     flex-basis: 8.33333%;
     flex-grow: 0;
     max-width: 8.33333%;
