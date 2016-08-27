@@ -49,14 +49,24 @@ $gl-col-bottom: $gl-gutter !default;
     [class*="#{$gridName}-"] > .#{$gl-colName},
     [class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName} {
         flex-basis: 100% / $default;
+        flex-grow: 1;
+        min-width: 100% / $default;
+    }
+
+    .mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
+    .mod_shrink[class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName} {
+        flex-basis: 100% / $default;
+        flex-grow: 0;
         max-width: 100% / $default;
     }
 
     @for $i from 1 through $columns {
+
         .#{$gridName}-#{$i} > .#{$gl-colName},
         .#{$gridName}_#{$breakpointName}-#{$i} > .#{$gl-colName} {
             flex-basis: 100% / $i;
-            max-width: 100% / $i;
+            flex-grow: 1;
+            min-width: 100% / $i;
         }
     }
 }
@@ -77,7 +87,8 @@ $gl-col-bottom: $gl-gutter !default;
         > [class*='col-'],
         > [class*='col_#{$breakpointName}-'] {
             flex-basis: 100% / $default;
-            max-width: 100% / $default;
+            flex-grow: 1;
+            min-width: 100% / $default;
         }
 
         @for $i from 1 through $columns {
@@ -85,7 +96,8 @@ $gl-col-bottom: $gl-gutter !default;
             > .#{$colName}-#{$i},
             > .#{$colName}_#{$breakpointName}-#{$i} {
                 flex-basis: 100% / (($columns / $i));
-                max-width: 100% / (($columns / $i));
+                flex-grow: 1;
+                min-width: 100% / (($columns / $i));
             }
         }
     }

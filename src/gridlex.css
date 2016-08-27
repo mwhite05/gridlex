@@ -100,19 +100,29 @@
   [class*="grid-"] > .col,
   [class*="grid_mobile-"] > .col {
     flex-basis: 100%;
+    flex-grow: 1;
+    min-width: 100%;
+  }
+
+  .mod_shrink[class*="grid-"] > .col,
+  .mod_shrink[class*="grid_mobile-"] > .col {
+    flex-basis: 100%;
+    flex-grow: 0;
     max-width: 100%;
   }
 
   .grid-1 > .col,
   .grid_mobile-1 > .col {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   .grid-2 > .col,
   .grid_mobile-2 > .col {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
 
   /*     COLUMNS grid_mobile    */
@@ -123,7 +133,8 @@
   .grid_mobile > [class*='col-'],
   .grid_mobile > [class*='col_mobile-'] {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
   .grid > .col-1,
   .grid > .col_mobile-1,
@@ -132,7 +143,8 @@
   .grid_mobile > .col-1,
   .grid_mobile > .col_mobile-1 {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
   .grid > .col-2,
   .grid > .col_mobile-2,
@@ -141,7 +153,8 @@
   .grid_mobile > .col-2,
   .grid_mobile > .col_mobile-2 {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   /*     OFFSETS grid_mobile    */
@@ -168,31 +181,43 @@
   [class*="grid-"] > .col,
   [class*="grid_tablet-"] > .col {
     flex-basis: 50%;
+    flex-grow: 1;
+    min-width: 50%;
+  }
+
+  .mod_shrink[class*="grid-"] > .col,
+  .mod_shrink[class*="grid_tablet-"] > .col {
+    flex-basis: 50%;
+    flex-grow: 0;
     max-width: 50%;
   }
 
   .grid-1 > .col,
   .grid_tablet-1 > .col {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   .grid-2 > .col,
   .grid_tablet-2 > .col {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
 
   .grid-3 > .col,
   .grid_tablet-3 > .col {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
 
   .grid-4 > .col,
   .grid_tablet-4 > .col {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
 
   /*     COLUMNS grid_tablet    */
@@ -203,7 +228,8 @@
   .grid_tablet > [class*='col-'],
   .grid_tablet > [class*='col_tablet-'] {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
   .grid > .col-1,
   .grid > .col_tablet-1,
@@ -212,7 +238,8 @@
   .grid_tablet > .col-1,
   .grid_tablet > .col_tablet-1 {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
   .grid > .col-2,
   .grid > .col_tablet-2,
@@ -221,7 +248,8 @@
   .grid_tablet > .col-2,
   .grid_tablet > .col_tablet-2 {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
   .grid > .col-3,
   .grid > .col_tablet-3,
@@ -230,7 +258,8 @@
   .grid_tablet > .col-3,
   .grid_tablet > .col_tablet-3 {
     flex-basis: 75%;
-    max-width: 75%;
+    flex-grow: 1;
+    min-width: 75%;
   }
   .grid > .col-4,
   .grid > .col_tablet-4,
@@ -239,7 +268,8 @@
   .grid_tablet > .col-4,
   .grid_tablet > .col_tablet-4 {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   /*     OFFSETS grid_tablet    */
@@ -282,43 +312,57 @@
   [class*="grid-"] > .col,
   [class*="grid_desktop-"] > .col {
     flex-basis: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
+  }
+
+  .mod_shrink[class*="grid-"] > .col,
+  .mod_shrink[class*="grid_desktop-"] > .col {
+    flex-basis: 16.66667%;
+    flex-grow: 0;
     max-width: 16.66667%;
   }
 
   .grid-1 > .col,
   .grid_desktop-1 > .col {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   .grid-2 > .col,
   .grid_desktop-2 > .col {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
 
   .grid-3 > .col,
   .grid_desktop-3 > .col {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
 
   .grid-4 > .col,
   .grid_desktop-4 > .col {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
 
   .grid-5 > .col,
   .grid_desktop-5 > .col {
     flex-basis: 20%;
-    max-width: 20%;
+    flex-grow: 1;
+    min-width: 20%;
   }
 
   .grid-6 > .col,
   .grid_desktop-6 > .col {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
 
   /*     COLUMNS grid_desktop    */
@@ -329,7 +373,8 @@
   .grid_desktop > [class*='col-'],
   .grid_desktop > [class*='col_desktop-'] {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
   .grid > .col-1,
   .grid > .col_desktop-1,
@@ -338,7 +383,8 @@
   .grid_desktop > .col-1,
   .grid_desktop > .col_desktop-1 {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
   .grid > .col-2,
   .grid > .col_desktop-2,
@@ -347,7 +393,8 @@
   .grid_desktop > .col-2,
   .grid_desktop > .col_desktop-2 {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
   .grid > .col-3,
   .grid > .col_desktop-3,
@@ -356,7 +403,8 @@
   .grid_desktop > .col-3,
   .grid_desktop > .col_desktop-3 {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
   .grid > .col-4,
   .grid > .col_desktop-4,
@@ -365,7 +413,8 @@
   .grid_desktop > .col-4,
   .grid_desktop > .col_desktop-4 {
     flex-basis: 66.66667%;
-    max-width: 66.66667%;
+    flex-grow: 1;
+    min-width: 66.66667%;
   }
   .grid > .col-5,
   .grid > .col_desktop-5,
@@ -374,7 +423,8 @@
   .grid_desktop > .col-5,
   .grid_desktop > .col_desktop-5 {
     flex-basis: 83.33333%;
-    max-width: 83.33333%;
+    flex-grow: 1;
+    min-width: 83.33333%;
   }
   .grid > .col-6,
   .grid > .col_desktop-6,
@@ -383,7 +433,8 @@
   .grid_desktop > .col-6,
   .grid_desktop > .col_desktop-6 {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   /*     OFFSETS grid_desktop    */
@@ -442,79 +493,99 @@
   [class*="grid-"] > .col,
   [class*="grid_desktop-hd-"] > .col {
     flex-basis: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
+  }
+
+  .mod_shrink[class*="grid-"] > .col,
+  .mod_shrink[class*="grid_desktop-hd-"] > .col {
+    flex-basis: 8.33333%;
+    flex-grow: 0;
     max-width: 8.33333%;
   }
 
   .grid-1 > .col,
   .grid_desktop-hd-1 > .col {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   .grid-2 > .col,
   .grid_desktop-hd-2 > .col {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
 
   .grid-3 > .col,
   .grid_desktop-hd-3 > .col {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
 
   .grid-4 > .col,
   .grid_desktop-hd-4 > .col {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
 
   .grid-5 > .col,
   .grid_desktop-hd-5 > .col {
     flex-basis: 20%;
-    max-width: 20%;
+    flex-grow: 1;
+    min-width: 20%;
   }
 
   .grid-6 > .col,
   .grid_desktop-hd-6 > .col {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
 
   .grid-7 > .col,
   .grid_desktop-hd-7 > .col {
     flex-basis: 14.28571%;
-    max-width: 14.28571%;
+    flex-grow: 1;
+    min-width: 14.28571%;
   }
 
   .grid-8 > .col,
   .grid_desktop-hd-8 > .col {
     flex-basis: 12.5%;
-    max-width: 12.5%;
+    flex-grow: 1;
+    min-width: 12.5%;
   }
 
   .grid-9 > .col,
   .grid_desktop-hd-9 > .col {
     flex-basis: 11.11111%;
-    max-width: 11.11111%;
+    flex-grow: 1;
+    min-width: 11.11111%;
   }
 
   .grid-10 > .col,
   .grid_desktop-hd-10 > .col {
     flex-basis: 10%;
-    max-width: 10%;
+    flex-grow: 1;
+    min-width: 10%;
   }
 
   .grid-11 > .col,
   .grid_desktop-hd-11 > .col {
     flex-basis: 9.09091%;
-    max-width: 9.09091%;
+    flex-grow: 1;
+    min-width: 9.09091%;
   }
 
   .grid-12 > .col,
   .grid_desktop-hd-12 > .col {
     flex-basis: 8.33333%;
-    max-width: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
   }
 
   /*     COLUMNS grid_desktop-hd    */
@@ -525,7 +596,8 @@
   .grid_desktop-hd > [class*='col-'],
   .grid_desktop-hd > [class*='col_desktop-hd-'] {
     flex-basis: 8.33333%;
-    max-width: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
   }
   .grid > .col-1,
   .grid > .col_desktop-hd-1,
@@ -534,7 +606,8 @@
   .grid_desktop-hd > .col-1,
   .grid_desktop-hd > .col_desktop-hd-1 {
     flex-basis: 8.33333%;
-    max-width: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
   }
   .grid > .col-2,
   .grid > .col_desktop-hd-2,
@@ -543,7 +616,8 @@
   .grid_desktop-hd > .col-2,
   .grid_desktop-hd > .col_desktop-hd-2 {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
   .grid > .col-3,
   .grid > .col_desktop-hd-3,
@@ -552,7 +626,8 @@
   .grid_desktop-hd > .col-3,
   .grid_desktop-hd > .col_desktop-hd-3 {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
   .grid > .col-4,
   .grid > .col_desktop-hd-4,
@@ -561,7 +636,8 @@
   .grid_desktop-hd > .col-4,
   .grid_desktop-hd > .col_desktop-hd-4 {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
   .grid > .col-5,
   .grid > .col_desktop-hd-5,
@@ -570,7 +646,8 @@
   .grid_desktop-hd > .col-5,
   .grid_desktop-hd > .col_desktop-hd-5 {
     flex-basis: 41.66667%;
-    max-width: 41.66667%;
+    flex-grow: 1;
+    min-width: 41.66667%;
   }
   .grid > .col-6,
   .grid > .col_desktop-hd-6,
@@ -579,7 +656,8 @@
   .grid_desktop-hd > .col-6,
   .grid_desktop-hd > .col_desktop-hd-6 {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
   .grid > .col-7,
   .grid > .col_desktop-hd-7,
@@ -588,7 +666,8 @@
   .grid_desktop-hd > .col-7,
   .grid_desktop-hd > .col_desktop-hd-7 {
     flex-basis: 58.33333%;
-    max-width: 58.33333%;
+    flex-grow: 1;
+    min-width: 58.33333%;
   }
   .grid > .col-8,
   .grid > .col_desktop-hd-8,
@@ -597,7 +676,8 @@
   .grid_desktop-hd > .col-8,
   .grid_desktop-hd > .col_desktop-hd-8 {
     flex-basis: 66.66667%;
-    max-width: 66.66667%;
+    flex-grow: 1;
+    min-width: 66.66667%;
   }
   .grid > .col-9,
   .grid > .col_desktop-hd-9,
@@ -606,7 +686,8 @@
   .grid_desktop-hd > .col-9,
   .grid_desktop-hd > .col_desktop-hd-9 {
     flex-basis: 75%;
-    max-width: 75%;
+    flex-grow: 1;
+    min-width: 75%;
   }
   .grid > .col-10,
   .grid > .col_desktop-hd-10,
@@ -615,7 +696,8 @@
   .grid_desktop-hd > .col-10,
   .grid_desktop-hd > .col_desktop-hd-10 {
     flex-basis: 83.33333%;
-    max-width: 83.33333%;
+    flex-grow: 1;
+    min-width: 83.33333%;
   }
   .grid > .col-11,
   .grid > .col_desktop-hd-11,
@@ -624,7 +706,8 @@
   .grid_desktop-hd > .col-11,
   .grid_desktop-hd > .col_desktop-hd-11 {
     flex-basis: 91.66667%;
-    max-width: 91.66667%;
+    flex-grow: 1;
+    min-width: 91.66667%;
   }
   .grid > .col-12,
   .grid > .col_desktop-hd-12,
@@ -633,7 +716,8 @@
   .grid_desktop-hd > .col-12,
   .grid_desktop-hd > .col_desktop-hd-12 {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   /*     OFFSETS grid_desktop-hd    */
@@ -740,79 +824,99 @@
   [class*="grid-"] > .col,
   [class*="grid_cinema-"] > .col {
     flex-basis: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
+  }
+
+  .mod_shrink[class*="grid-"] > .col,
+  .mod_shrink[class*="grid_cinema-"] > .col {
+    flex-basis: 8.33333%;
+    flex-grow: 0;
     max-width: 8.33333%;
   }
 
   .grid-1 > .col,
   .grid_cinema-1 > .col {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   .grid-2 > .col,
   .grid_cinema-2 > .col {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
 
   .grid-3 > .col,
   .grid_cinema-3 > .col {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
 
   .grid-4 > .col,
   .grid_cinema-4 > .col {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
 
   .grid-5 > .col,
   .grid_cinema-5 > .col {
     flex-basis: 20%;
-    max-width: 20%;
+    flex-grow: 1;
+    min-width: 20%;
   }
 
   .grid-6 > .col,
   .grid_cinema-6 > .col {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
 
   .grid-7 > .col,
   .grid_cinema-7 > .col {
     flex-basis: 14.28571%;
-    max-width: 14.28571%;
+    flex-grow: 1;
+    min-width: 14.28571%;
   }
 
   .grid-8 > .col,
   .grid_cinema-8 > .col {
     flex-basis: 12.5%;
-    max-width: 12.5%;
+    flex-grow: 1;
+    min-width: 12.5%;
   }
 
   .grid-9 > .col,
   .grid_cinema-9 > .col {
     flex-basis: 11.11111%;
-    max-width: 11.11111%;
+    flex-grow: 1;
+    min-width: 11.11111%;
   }
 
   .grid-10 > .col,
   .grid_cinema-10 > .col {
     flex-basis: 10%;
-    max-width: 10%;
+    flex-grow: 1;
+    min-width: 10%;
   }
 
   .grid-11 > .col,
   .grid_cinema-11 > .col {
     flex-basis: 9.09091%;
-    max-width: 9.09091%;
+    flex-grow: 1;
+    min-width: 9.09091%;
   }
 
   .grid-12 > .col,
   .grid_cinema-12 > .col {
     flex-basis: 8.33333%;
-    max-width: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
   }
 
   /*     COLUMNS grid_cinema    */
@@ -823,7 +927,8 @@
   .grid_cinema > [class*='col-'],
   .grid_cinema > [class*='col_cinema-'] {
     flex-basis: 8.33333%;
-    max-width: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
   }
   .grid > .col-1,
   .grid > .col_cinema-1,
@@ -832,7 +937,8 @@
   .grid_cinema > .col-1,
   .grid_cinema > .col_cinema-1 {
     flex-basis: 8.33333%;
-    max-width: 8.33333%;
+    flex-grow: 1;
+    min-width: 8.33333%;
   }
   .grid > .col-2,
   .grid > .col_cinema-2,
@@ -841,7 +947,8 @@
   .grid_cinema > .col-2,
   .grid_cinema > .col_cinema-2 {
     flex-basis: 16.66667%;
-    max-width: 16.66667%;
+    flex-grow: 1;
+    min-width: 16.66667%;
   }
   .grid > .col-3,
   .grid > .col_cinema-3,
@@ -850,7 +957,8 @@
   .grid_cinema > .col-3,
   .grid_cinema > .col_cinema-3 {
     flex-basis: 25%;
-    max-width: 25%;
+    flex-grow: 1;
+    min-width: 25%;
   }
   .grid > .col-4,
   .grid > .col_cinema-4,
@@ -859,7 +967,8 @@
   .grid_cinema > .col-4,
   .grid_cinema > .col_cinema-4 {
     flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-grow: 1;
+    min-width: 33.33333%;
   }
   .grid > .col-5,
   .grid > .col_cinema-5,
@@ -868,7 +977,8 @@
   .grid_cinema > .col-5,
   .grid_cinema > .col_cinema-5 {
     flex-basis: 41.66667%;
-    max-width: 41.66667%;
+    flex-grow: 1;
+    min-width: 41.66667%;
   }
   .grid > .col-6,
   .grid > .col_cinema-6,
@@ -877,7 +987,8 @@
   .grid_cinema > .col-6,
   .grid_cinema > .col_cinema-6 {
     flex-basis: 50%;
-    max-width: 50%;
+    flex-grow: 1;
+    min-width: 50%;
   }
   .grid > .col-7,
   .grid > .col_cinema-7,
@@ -886,7 +997,8 @@
   .grid_cinema > .col-7,
   .grid_cinema > .col_cinema-7 {
     flex-basis: 58.33333%;
-    max-width: 58.33333%;
+    flex-grow: 1;
+    min-width: 58.33333%;
   }
   .grid > .col-8,
   .grid > .col_cinema-8,
@@ -895,7 +1007,8 @@
   .grid_cinema > .col-8,
   .grid_cinema > .col_cinema-8 {
     flex-basis: 66.66667%;
-    max-width: 66.66667%;
+    flex-grow: 1;
+    min-width: 66.66667%;
   }
   .grid > .col-9,
   .grid > .col_cinema-9,
@@ -904,7 +1017,8 @@
   .grid_cinema > .col-9,
   .grid_cinema > .col_cinema-9 {
     flex-basis: 75%;
-    max-width: 75%;
+    flex-grow: 1;
+    min-width: 75%;
   }
   .grid > .col-10,
   .grid > .col_cinema-10,
@@ -913,7 +1027,8 @@
   .grid_cinema > .col-10,
   .grid_cinema > .col_cinema-10 {
     flex-basis: 83.33333%;
-    max-width: 83.33333%;
+    flex-grow: 1;
+    min-width: 83.33333%;
   }
   .grid > .col-11,
   .grid > .col_cinema-11,
@@ -922,7 +1037,8 @@
   .grid_cinema > .col-11,
   .grid_cinema > .col_cinema-11 {
     flex-basis: 91.66667%;
-    max-width: 91.66667%;
+    flex-grow: 1;
+    min-width: 91.66667%;
   }
   .grid > .col-12,
   .grid > .col_cinema-12,
@@ -931,7 +1047,8 @@
   .grid_cinema > .col-12,
   .grid_cinema > .col_cinema-12 {
     flex-basis: 100%;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 100%;
   }
 
   /*     OFFSETS grid_cinema    */
