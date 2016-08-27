@@ -48,12 +48,13 @@ $gl-col-bottom: $gl-gutter !default;
     // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
     [class*="#{$gridName}-"] > .#{$gl-colName},
     [class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName} {
-        width: 100% / $default;
+        flex-basis: 100% / $default;
+        max-width: 100% / $default;
     }
 
     @for $i from 1 through $columns {
         .#{$gridName}-#{$i} > .#{$gl-colName},
-        .#{$gridName}_#{$breakpointName}-#{$i} > #{$gl-colName} {
+        .#{$gridName}_#{$breakpointName}-#{$i} > .#{$gl-colName} {
             flex-basis: 100% / $i;
             max-width: 100% / $i;
         }
@@ -67,13 +68,16 @@ $gl-col-bottom: $gl-gutter !default;
     //.#{$gridName}_#{$breakpointName} > [class*='#{$gl-colName}-']
 
     .#{$gridName},
+    [class*="#{$gridName}-"],
     .#{$gridName}_#{$breakpointName} {
 
 
         // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
 
-        > [class*='col-'] {
-            width: 100% / $default;
+        > [class*='col-'],
+        > [class*='col_#{$breakpointName}-'] {
+            flex-basis: 100% / $default;
+            max-width: 100% / $default;
         }
 
         @for $i from 1 through $columns {
