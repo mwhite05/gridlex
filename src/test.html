@@ -25,7 +25,8 @@
         li{ margin: 0; }
 
         [class*="grid-"] > .col,
-        .grid > [class*="col-"] {
+        .grid > [class*="col_"],
+        .grid > [class*="col-"]{
             background-color: #ffffff;
             color: #788991;
             text-align: center;
@@ -34,12 +35,12 @@
     </style>
 </head>
 <body>
-<div class="grid">
-    <div class="col-10 mod_shrink mod_desktop-hd-push-left-1">
+<div class="grid mod_center">
+    <div class="col-desktop-hd-12 col-cinema-10 mod_cinema-push-left-2 mod_cinema-push-right-2">
         <p>You should view this page at a range of sizes based on your breakpoints. This page is designed to demonstrate the default breakpoints
         for which the primary features can be seen by checking in these widths:</p>
     </div>
-    <div class="col-10 mod_shrink mod_desktop-hd-push-left-1">
+    <div class="col-desktop-hd-12 col-cinema-10 mod_cinema-push-left-2 mod_cinema-push-right-2">
         <ul>
             <li>1440+</li>
             <li>1200</li>
@@ -53,7 +54,7 @@
 </div>
 
 <div class="grid">
-    <div class="col-10 mod_desktop-push-left-2">
+    <div class="col-desktop-hd-12 col-cinema-10 mod_cinema-push-left-2">
         <p>grid &gt; col-10 &gt; mod_push-left-2</p>
     </div>
 </div>
@@ -63,7 +64,7 @@
 <br>
 
 <div class="grid">
-    <div class="col-7 grid-3 grid_mobile-2 col_desktop-6 mod_removeGutter">
+    <div class="col-7 grid-3 grid-mobile-2 col-desktop-6 mod_removeGutter">
         <div class="col"><p>grid &gt; col-7 &gt; grid-3 / grid_mobile-2</p></div>
         <div class="col"><p>grid &gt; col-7 &gt; grid-3 / grid_mobile-2</p></div>
         <div class="col"><p>grid &gt; col-7 &gt; grid-3 / grid_mobile-2</p></div>
@@ -101,12 +102,12 @@
         <div class="col"><p>grid-3</p></div>
     </div>
     <div class="grid-4">
-        <div class="col col_mobile-1"><p>grid-4</p></div>
-        <div class="col col_mobile-1"><p>grid-4</p></div>
-        <div class="col col_mobile-2"><p>grid-4</p></div>
+        <div class="col col-mobile-1"><p>grid-4</p></div>
+        <div class="col col-mobile-1"><p>grid-4</p></div>
+        <div class="col col-mobile-2"><p>grid-4</p></div>
         <div class="col"><p>grid-4</p></div>
     </div>
-    <div class="grid-4 grid_mobile-2">
+    <div class="grid-4 grid-mobile-2">
         <div class="col"><p>grid-4</p></div>
         <div class="col"><p>grid-4</p></div>
         <div class="col"><p>grid-4</p></div>

@@ -18,8 +18,8 @@ $root-font-size: 16; // used in em calculations
 $breakpoints: (
     mobile: (width: 320, columns: 2, default: 1), // Max 2 columns if set explicitly. If not specified, defaults to 1 column max.
     tablet: (width: 640, columns: 4, default: 2), // Max 4 columns if set explicitly. If not specified, defaults to 1 column max.
-    desktop: (width: 768, columns: 6, default: 6), // Max 6 columns if set explicitly. If not specified, defaults to 6 column max.
-    desktop-hd: (width: 1024, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
+    desktop: (width: 769, columns: 6, default: 6), // Max 6 columns if set explicitly. If not specified, defaults to 6 column max.
+    desktop-hd: (width: 1025, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
     cinema: (width: 1440, columns: 12, default: 12), // Max 12 columns if set explicitly. If not specified, defaults to 12 columns max.
 );
 // </editor-fold>
@@ -40,14 +40,14 @@ $gl-col-bottom: $gl-gutter !default;
 //     WE RECOMMEND THAT YOU DO NO EDIT BELOW THIS LINE
 // ========================================================
 
-// <editor-fold desc="MEDIA QUERIES FOR BREAKPOINTS">
-// </editor-fold>
+$breakpoint-names: map-keys($breakpoints);
+$breakpoint-values: map-values($breakpoints);
 
 // Function to generate the grid by number
 @mixin makeGridByNumber($gridName, $breakpointName, $columns, $default) {
     // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
     [class*="#{$gridName}-"] > .#{$gl-colName},
-    [class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName} {
+    [class*="#{$gridName}-#{$breakpointName}-"] > .#{$gl-colName} {
         flex-basis: 100% / $default;
         flex-grow: 1;
         min-width: 100% / $default;
@@ -65,9 +65,9 @@ $gl-col-bottom: $gl-gutter !default;
 //}
 
     .mod_shrink[class*="#{$gridName}-"] > .#{$gl-colName},
-    .mod_shrink[class*="#{$gridName}_#{$breakpointName}-"] > .#{$gl-colName},
+    .mod_shrink[class*="#{$gridName}-#{$breakpointName}-"] > .#{$gl-colName},
     [class*="#{$gridName}-"] > .mod_shrink.#{$gl-colName},
-    [class*="#{$gridName}_#{$breakpointName}-"] > .mod_shrink.#{$gl-colName}{
+    [class*="#{$gridName}-#{$breakpointName}-"] > .mod_shrink.#{$gl-colName}{
         flex-basis: 100% / $default;
         flex-grow: 0;
         max-width: 100% / $default;
@@ -76,7 +76,7 @@ $gl-col-bottom: $gl-gutter !default;
     @for $i from 1 through $columns {
 
         .#{$gridName}-#{$i} > .#{$gl-colName},
-        .#{$gridName}_#{$breakpointName}-#{$i} > .#{$gl-colName} {
+        .#{$gridName}-#{$breakpointName}-#{$i} > .#{$gl-colName} {
             flex-basis: 100% / $i;
             flex-grow: 1;
             min-width: 100% / $i;
@@ -89,7 +89,7 @@ $gl-col-bottom: $gl-gutter !default;
 
     .#{$gridName},
     [class*="#{$gridName}-"],
-    .#{$gridName}_#{$breakpointName} {
+    .#{$gridName}-#{$breakpointName} {
 
         // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
         > [class*='col-'],
@@ -103,12 +103,12 @@ $gl-col-bottom: $gl-gutter !default;
 
     .#{$gridName},
     //[class*="#{$gridName}-"],
-    .#{$gridName}_#{$breakpointName} {
+    .#{$gridName}-#{$breakpointName} {
 
         @for $i from 1 through $columns {
 
             > .#{$colName}-#{$i},
-            > .#{$colName}_#{$breakpointName}-#{$i} {
+            > .#{$colName}-#{$breakpointName}-#{$i} {
                 flex-basis: 100% / (($columns / $i));
                 flex-grow: 1;
                 min-width: 100% / (($columns / $i));

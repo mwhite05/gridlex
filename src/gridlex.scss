@@ -5,6 +5,7 @@
 @import "gridlex-vars";
 
 .#{$gl-gridName},
+//[class*="#{$gl-gridName}_"]
 [class*="#{$gl-gridName}-"] {
     box-sizing: border-box;
     display: flex;
@@ -12,6 +13,7 @@
 }
 
 .#{$gl-colName},
+//[class*="#{$gl-colName}_"]
 [class*="#{$gl-colName}-"] {
     box-sizing: border-box;
     flex: 0 0 auto;
@@ -108,7 +110,7 @@
     }
 
     &.mod_center {
-
+        justify-content: center;
     }
 
     &.mod_right {
@@ -280,6 +282,9 @@
     }
 }
 
+@for $bpId from 0 through length($breakpoint-names) - 1 {
+
+}
 @each $breakpointName, $breakpoint in $breakpoints {
     $width: map-get($breakpoint, width);
     $default: map-get($breakpoint, default);
@@ -295,7 +300,19 @@
     // =================================================
     /*     GRID MEDIA QUERY #{$gl-gridName}_#{$breakpointName}    */
     // =================================================
-    @media only screen and (min-width: #{$widthEm}) {
+    $nextBreakpointNameIndex: index($breakpoint-names, $breakpointName) + 1;
+
+    $mq: '' !default;
+    @if ($nextBreakpointNameIndex <= length($breakpoint-names)) {
+        $nextBreakpointName: nth($breakpoint-names, $nextBreakpointNameIndex);
+        $nextBreakpoint: map-get($breakpoints, $nextBreakpointName);
+        $nextBreakpointWidth: map-get($nextBreakpoint, width);
+        $nextBreakpointWidthEm: 1em * (($nextBreakpointWidth - 1) / $root-font-size);
+        $mq: "only screen and (min-width: #{$widthEm}) and (max-width: #{$nextBreakpointWidthEm})";
+    } @else {
+        $mq: "only screen and (min-width: #{$widthEm})";
+    }
+    @media #{$mq} {
         // =================================================
         /*     GRID BY NUMBER #{$gl-gridName}_#{$breakpointName}    */
         // =================================================
@@ -311,4 +328,5 @@
         // =================================
         @include makeOff($gl-gridName, $breakpointName, $gl-offName, $columns, $default);
     }
+
 }
