@@ -38,11 +38,11 @@
     //$columns: map-get($breakpoint, columns);
     $widthEm: 1em * ($width / $root-font-size);
 
-    .#{$gridName} > .mod_shrink[class*="#{$colName}-"] {
-        flex-basis: 100% / $defaultSpan;
-        flex-grow: 0;
-        max-width: 100% / $defaultSpan;
-    }
+    //.#{$gridName} > .mod_shrink[class*="#{$colName}-"] {
+    //    flex-basis: 100% / $defaultSpan;
+    //    flex-grow: 0;
+    //    max-width: 100% / $defaultSpan;
+    //}
 
     // =================================================
     /*     GRID MEDIA QUERY #{$gridName}_#{$breakpointName}    */
@@ -60,6 +60,7 @@
         $mq: "only screen and (min-width: #{$widthEm})";
     }
     @media #{$mq} {
+
         // =================================
         /*     COLUMNS #{$gridName}_#{$breakpointName}    */
         // =================================

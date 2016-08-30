@@ -205,31 +205,46 @@
 @mixin makeGridByNumber($breakpointName, $defaultSpan, $settings:()) {
 
     // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
-    [class*="#{$gridName}-"] > .#{$colName},
-    [class*="#{$gridName}-#{$breakpointName}-"] > .#{$colName} {
-        //flex-basis: 100% / $defaultSpan;
-        ////flex-grow: 1;
-        ////min-width: 100% / $defaultSpan;
-        //max-width: 100% / $defaultSpan;
-        flex-basis: 100% / (($columns / $defaultSpan));
-        //flex-grow: 1;
-        //min-width: 100% / (($columns / $defaultSpan));
-        max-width: 100% / (($columns / $defaultSpan));
-    }
+    //[class*="#{$gridName}-"] > .#{$colName},
+    //[class*="#{$gridName}-#{$breakpointName}-"] > .#{$colName} {
+    //    flex-basis: 100% / (($columns / $defaultSpan));
+    //    max-width: 100% / (($columns / $defaultSpan));
+    //}
 
+    $bb: ();
     @for $i from 1 through $columns {
+        // IF the number of columns specified for a GENERIC grid (e.g. grid-8) exceeds the number of faux columns
+        // created by the equation ($columns / $defaultSpan), (e.g. 12 / 6 = 2), then the column width to render for
+        // that grid-X level should be (100% / ($columns / $defaultSpan))
 
-        .#{$gridName}-#{$i} > .#{$colName},
-        .#{$gridName}-#{$breakpointName}-#{$i} > .#{$colName} {
-            flex-basis: 100% / $i;
-            max-width: 100% / $i;
+        @if $i > ($columns / $defaultSpan) {
+            // For less redundancy, no CSS is rendered here.
+            // Instead, the CSS this would render is rendered below combined for all sizes it affects.
+            $bb: append($bb, ".#{$gridName}-#{$i} > .#{$colName}", comma);
+            $bb: append($bb, ".#{$gridName}-#{$breakpointName}-#{$i} > .#{$colName}", comma);
+        } @else {
+            .#{$gridName}-#{$i} > .#{$colName},
+            .#{$gridName}-#{$breakpointName}-#{$i} > .#{$colName} {
+                flex-basis: 100% / $i;
+                max-width: 100% / $i;
+            }
         }
     }
 
-    //@if $generateGridModifiersPerBreakpoint == true {
-    //    @include gridMods($colName, $breakpointName);
-    //}
+    @if length($bb) {
+
+        #{$bb} {
+            flex-basis: 100% / ($columns / $defaultSpan);
+            max-width: 100% / ($columns / $defaultSpan);
+        }
+        //@each $cn in $bb {
+        //}
+    }
 }
+
+//@if $generateGridModifiersPerBreakpoint == true {
+//    @include gridMods($colName, $breakpointName);
+//}
 
 // Function to generate the grid by columns
 @mixin makeCol($breakpointName, $colName, $defaultSpan, $settings:()) {
@@ -249,7 +264,7 @@
     }
 
     .#{$gridName},
-    //[class*="#{$gridName}-"],
+        //[class*="#{$gridName}-"],
     .#{$gridName}-#{$breakpointName} {
 
         @for $i from 1 through $columns {
