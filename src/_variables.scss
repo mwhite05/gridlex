@@ -35,11 +35,19 @@ $gutter-horizontal: 1em !default;
 $gutter-bottom: $gutter-horizontal !default;
 // </editor-fold>
 
+// <editor-fold desc="GENERATOR CONFIGURATION">
+// Generating modifier classes for every breakpoint will greatly increase
+// the generate file's size but allows much more granularity in controlling
+// grid and column behavior than would otherwise be possible. (When using
+// the default breakpoints, if both grid and column modifiers are enabled
+// the size increases from 13KB to nearly 40KB)
+$generateGridModifiersPerBreakpoint: false !default;
+$generateColumnModifiersPerBreakpoint: true !default;
+// </editor-fold>
 
-// ========================================================
-//     WE RECOMMEND THAT YOU DO NO EDIT BELOW THIS LINE
-// ========================================================
+// =======================================================================
+//     WE RECOMMEND THAT YOU DO NO CUSTOMIZE VARIABLES BELOW THIS LINE
+// =======================================================================
 
 $breakpoint-names: map-keys($breakpoints) !default;
 $breakpoint-values: map-values($breakpoints) !default;
-

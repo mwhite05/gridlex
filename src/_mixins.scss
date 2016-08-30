@@ -1,0 +1,287 @@
+@import "variables";
+
+@mixin gridMods($gridName, $colName, $breakpointName) {
+    // Determine the prefix to use
+    $prefix: if($breakpointName != '', "&.#{$modPrefix}#{$breakpointName}-", "&.#{$modPrefix}");
+
+    .#{$gridName},
+    [class*="#{$gridName}-"] {
+
+        #{$prefix}removeGutter {
+            margin: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding: 0;
+            }
+        }
+
+        #{$prefix}removeGutter-horizontal {
+            margin-left: 0;
+            margin-right: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        #{$prefix}removeGutter-vertical {
+            margin-top: 0;
+            margin-bottom: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        #{$prefix}removeGutter-left {
+            margin-left: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding-left: 0;
+            }
+        }
+
+        #{$prefix}removeGutter-right {
+            margin-right: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding-right: 0;
+            }
+        }
+
+        #{$prefix}removeGutter-top {
+            margin-top: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding-top: 0;
+            }
+        }
+
+        #{$prefix}removeGutter-bottom {
+            margin-top: 0;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                padding-bottom: 0;
+            }
+        }
+
+        #{$prefix}left {
+            justify-content: flex-start;
+            margin-right: auto;
+            align-self: flex-start;
+        }
+
+        #{$prefix}center {
+            justify-content: center;
+        }
+
+        #{$prefix}right {
+            justify-content: flex-end;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        #{$prefix}top {
+            align-items: flex-start;
+        }
+
+        #{$prefix}middle {
+            align-items: center;
+        }
+
+        #{$prefix}bottom {
+            align-items: flex-end;
+        }
+
+        #{$prefix}reverse {
+            flex-direction: row-reverse;
+        }
+
+        #{$prefix}column {
+            flex-direction: column;
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                flex-basis: auto;
+            }
+        }
+
+        #{$prefix}column-reverse {
+            flex-direction: column-reverse;
+        }
+
+        #{$prefix}spaceBetween {
+            justify-content: space-between;
+        }
+
+        #{$prefix}spaceAround {
+            justify-content: space-around;
+        }
+
+        #{$prefix}equalHeight {
+
+            > .#{$colName},
+            > [class*="#{$colName}"] {
+                display: flex;
+            }
+        }
+    }
+}
+
+@mixin colMods($gridName, $colName, $breakpointName) {
+
+    // Determine the prefix to use
+    $prefix: if($breakpointName != '', "&.#{$modPrefix}#{$breakpointName}-", "&.#{$modPrefix}");
+
+    .#{$colName},
+    [class*="#{$colName}-"] {
+
+        #{$prefix}removeGutter {
+            padding: 0;
+        }
+
+        #{$prefix}removeGutter-left {
+            padding-left: 0;
+        }
+
+        #{$prefix}removeGutter-right {
+            padding-right: 0;
+        }
+
+        #{$prefix}removeGutter-top {
+            padding-top: 0;
+        }
+
+        #{$prefix}removeGutter-bottom {
+            padding-bottom: 0;
+        }
+
+        #{$prefix}top {
+            align-self: flex-start;
+        }
+
+        #{$prefix}middle {
+            align-self: center;
+        }
+
+        #{$prefix}bottom {
+            align-self: flex-end;
+        }
+
+        #{$prefix}right {
+            margin-left: auto;
+        }
+
+        #{$prefix}left {
+            margin-right: auto;
+        }
+
+        #{$prefix}first {
+            order: -1;
+        }
+
+        #{$prefix}last {
+            order: 1;
+        }
+
+        #{$prefix}grow {
+            flex: 1;
+            flex-basis: auto;
+            max-width: none;
+        }
+    }
+}
+
+// Function to generate the grid by number
+@mixin makeGridByNumber($gridName, $breakpointName, $columns, $defaultSpan) {
+    // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
+    [class*="#{$gridName}-"] > .#{$colName},
+    [class*="#{$gridName}-#{$breakpointName}-"] > .#{$colName} {
+        flex-basis: 100% / $defaultSpan;
+        //flex-grow: 1;
+        //min-width: 100% / $defaultSpan;
+        max-width: 100% / $defaultSpan;
+    }
+
+    @for $i from 1 through $columns {
+
+        .#{$gridName}-#{$i} > .#{$colName},
+        .#{$gridName}-#{$breakpointName}-#{$i} > .#{$colName} {
+            flex-basis: 100% / $i;
+            max-width: 100% / $i;
+        }
+    }
+
+    @if $generateGridModifiersPerBreakpoint == true {
+        @include gridMods($gridName, $colName, $breakpointName);
+    }
+}
+
+// Function to generate the grid by columns
+@mixin makeCol($gridName, $breakpointName, $colName, $columns, $defaultSpan) {
+
+    .#{$gridName},
+    [class*="#{$gridName}-"],
+    .#{$gridName}-#{$breakpointName} {
+
+        // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
+        > [class*='col-'],
+        > [class*='col-#{$breakpointName}-'] {
+            flex-basis: 100% / $defaultSpan;
+            //flex-grow: 1;
+            //min-width: 100% / $default;
+            max-width: 100% / $defaultSpan;
+        }
+    }
+
+    .#{$gridName},
+    //[class*="#{$gridName}-"],
+    .#{$gridName}-#{$breakpointName} {
+
+        @for $i from 1 through $columns {
+
+            > .#{$colName}-#{$i},
+            > .#{$colName}-#{$breakpointName}-#{$i} {
+                flex-basis: 100% / (($columns / $i));
+                //flex-grow: 1;
+                //min-width: 100% / (($columns / $i));
+                max-width: 100% / (($columns / $i));
+            }
+        }
+    }
+
+    @if $generateColumnModifiersPerBreakpoint == true {
+        @include colMods($gridName, $colName, $breakpointName);
+    }
+}
+
+// Function to generate the offset
+//@mixin makeOff($gridName, $breakpointName, $offName, $columns, $defaultSpan) {
+//
+//    .#{$gridName},
+//    [class*="#{$gridName}-"] {
+//
+//        // No special default here - if the push amount is not recognized then it will be zero
+//
+//        @for $i from 0 through $columns - 1 {
+//            > .mod_#{$breakpointName}-push-left-#{$i} {
+//            //> .mod_#{$breakpointName}-push-left-#{$i} {
+//                margin-left: (100% / (($columns / $i)));
+//            }
+//
+//            > .mod_#{$breakpointName}-push-right-#{$i} {
+//            //> .mod_push-right-#{$i} {
+//                margin-right: (100% / (($columns / $i)));
+//            }
+//        }
+//    }
+//}

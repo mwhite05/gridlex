@@ -1,23 +1,20 @@
-/* ==========================================================================
-    GRIDLEX
-    Just a Flexbox Grid System
-========================================================================== */
-@import "gridlex-vars";
+@import "variables";
+@import "mixins";
 
-.#{$gl-gridName},
-//[class*="#{$gl-gridName}_"]
-[class*="#{$gl-gridName}-"] {
+.#{$gridName},
+//[class*="#{$gridName}_"]
+[class*="#{$gridName}-"] {
     box-sizing: border-box;
     display: flex;
     flex-flow: row wrap;
 }
 
-.#{$gl-colName},
+.#{$colName},
 //[class*="#{$gl-colName}_"]
-[class*="#{$gl-colName}-"] {
+[class*="#{$colName}-"] {
     box-sizing: border-box;
     flex: 0 0 auto;
-    padding: 0 ($gl-gutter/2) $gl-col-bottom;
+    padding: 0 ($gutter-horizontal/2) $gutter-bottom;
 }
 
 //.#{$gl-colName}-full {
@@ -29,289 +26,26 @@
 //    flex: 1 1 0;
 //}
 
-.#{$gl-gridName}.#{$gl-colName},
-.#{$gl-gridName}[class*="#{$gl-colName}-"] {
+.#{$gridName}.#{$colName},
+.#{$gridName}[class*="#{$colName}-"] {
     margin: 0;
     padding: 0;
 }
 
-.#{$gl-gridName},
-[class*="#{$gl-gridName}-"] {
-
-    &.mod_removeGutter {
-        margin: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding: 0;
-        }
-    }
-
-    &.mod_removeGutter-horizontal {
-        margin-left: 0;
-        margin-right: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
-
-    &.mod_removeGutter-vertical {
-        margin-top: 0;
-        margin-bottom: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-    }
-
-    &.mod_removeGutter-left {
-        margin-left: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding-left: 0;
-        }
-    }
-
-    &.mod_removeGutter-right {
-        margin-right: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding-right: 0;
-        }
-    }
-
-    &.mod_removeGutter-top {
-        margin-top: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding-top: 0;
-        }
-    }
-
-    &.mod_removeGutter-bottom {
-        margin-top: 0;
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            padding-bottom: 0;
-        }
-    }
-
-    &.mod_left {
-
-    }
-
-    &.mod_center {
-        justify-content: center;
-    }
-
-    &.mod_right {
-
-    }
-
-    &.mod_top {
-
-    }
-
-    &.mod_middle {
-
-    }
-
-    &.mod_bottom {
-
-    }
-
-    &.mod_reverse {
-
-    }
-
-    &.mod_column {
-
-    }
-
-    &.mod_column-reverse {
-
-    }
-
-    &.mod_spaceBetween {
-
-    }
-
-    &.mod_spaceAround {
-
-    }
-
-    &.mod_equalHeight {
-
-        > .#{$gl-colName},
-        > [class*="#{$gl-colName}"] {
-            display: flex;
-        }
-    }
-}
-
-.#{$gl-colName},
-[class*="#{$gl-colName}-"] {
-
-    &.mod_removeGutter {
-        padding: 0;
-    }
-
-    &.mod_removeGutter-left {
-        padding-left: 0;
-    }
-
-    &.mod_removeGutter-right {
-        padding-right: 0;
-    }
-
-    &.mod_removeGutter-top {
-        padding-top: 0;
-    }
-
-    &.mod_removeGutter-bottom {
-        padding-bottom: 0;
-    }
-
-    &.mod_top {
-
-    }
-
-    &.mod_middle {
-
-    }
-
-    &.mod_bottom {
-
-    }
-
-    &.mod_right {
-        margin-left: auto;
-    }
-
-    &.mod_left {
-        margin-right: auto;
-    }
-
-    &.mod_first {
-
-    }
-
-    &.mod_last {
-
-    }
-
-    &.mod_grow {
-        flex: 1;
-    }
-}
-
-/************************
-    HELPERS SUFFIXES
-*************************/
-// FOR GRID
-[class*="#{$gl-gridName}-"] {
-    // No spacing between cols : noGutter
-    &[class*="-noGutter"] {
-        margin: 0;
-        > [class*="#{$gl-colName}"] {
-            padding: 0;
-        }
-    }
-
-    // Horizontal alignment
-    &[class*="-center"] {
-        justify-content: center;
-    }
-    &[class*="-right"] {
-        justify-content: flex-end;
-        align-self: flex-end;
-        margin-left: auto;
-    }
-    // Vertical alignment
-    &[class*="-top"] {
-        align-items: flex-start;
-    }
-    &[class*="-middle"] {
-        align-items: center;
-    }
-    &[class*="-bottom"] {
-        align-items: flex-end;
-    }
-
-    // Orders
-    &[class*="-reverse"] {
-        flex-direction: row-reverse;
-    }
-    &[class*="-column"] {
-        flex-direction: column;
-        > [class*="#{$gl-colName}-"] {
-            flex-basis: auto;
-        }
-    }
-    &[class*="-column-reverse"] {
-        flex-direction: column-reverse;
-    }
-
-    // Spaces between and around cols
-    &[class*="-spaceBetween"] {
-        justify-content: space-between;
-    }
-    &[class*="-spaceAround"] {
-        justify-content: space-around;
-    }
-
-    // Equal heights columns
-    &[class*="-equalHeight"] > [class*="#{$gl-colName}"] {
-        display: flex;
-    }
-    // Removes the padding-bottom
-    &[class*="-noBottom"] > [class*="#{$gl-colName}"] {
-        padding-bottom: 0;
-    }
-}
-
-// FOR COL
-[class*="#{$gl-colName}-"] {
-    &[class*="-top"] {
-        align-self: flex-start;
-    }
-    &[class*="-middle"] {
-        align-self: center;
-    }
-    &[class*="-bottom"] {
-        align-self: flex-end;
-    }
-    &[class*="-first"] {
-        order: -1;
-    }
-    &[class*="-last"] {
-        order: 1;
-    }
-}
-
 @each $breakpointName, $breakpoint in $breakpoints {
     $width: map-get($breakpoint, width);
-    $default: map-get($breakpoint, default);
+    $defaultSpan: map-get($breakpoint, defaultSpan);
     $columns: map-get($breakpoint, columns);
     $widthEm: 1em * ($width / $root-font-size);
 
-    .#{$gl-gridName} > .mod_shrink[class*="#{$gl-colName}-"] {
-        flex-basis: 100% / $default;
+    .#{$gridName} > .mod_shrink[class*="#{$colName}-"] {
+        flex-basis: 100% / $defaultSpan;
         flex-grow: 0;
-        max-width: 100% / $default;
+        max-width: 100% / $defaultSpan;
     }
 
     // =================================================
-    /*     GRID MEDIA QUERY #{$gl-gridName}_#{$breakpointName}    */
+    /*     GRID MEDIA QUERY #{$gridName}_#{$breakpointName}    */
     // =================================================
     $nextBreakpointNameIndex: index($breakpoint-names, $breakpointName) + 1;
 
@@ -326,20 +60,24 @@
         $mq: "only screen and (min-width: #{$widthEm})";
     }
     @media #{$mq} {
+        // =================================
+        /*     COLUMNS #{$gridName}_#{$breakpointName}    */
+        // =================================
+        @include makeCol($gridName, $breakpointName, $colName, $columns, $defaultSpan);
+
         // =================================================
-        /*     GRID BY NUMBER #{$gl-gridName}_#{$breakpointName}    */
+        /*     GRID BY NUMBER #{$gridName}_#{$breakpointName}    */
         // =================================================
-        @include makeGridByNumber($gl-gridName, $breakpointName, $columns, $default);
+        @include makeGridByNumber($gridName, $breakpointName, $columns, $defaultSpan);
 
         // =================================
-        /*     COLUMNS #{$gl-gridName}_#{$breakpointName}    */
+        ///*     OFFSETS #{$gridName}_#{$breakpointName}    */
         // =================================
-        @include makeCol($gl-gridName, $breakpointName, $gl-colName, $columns, $default);
-
-        // =================================
-        ///*     OFFSETS #{$gl-gridName}_#{$breakpointName}    */
-        // =================================
-        //@include makeOff($gl-gridName, $breakpointName, $gl-offName, $columns, $default);
+        //@include makeOff($gridName, $breakpointName, $gl-offName, $columns, $default);
     }
 
 }
+
+@include gridMods($gridName, $colName, '');
+
+@include colMods($gridName, $colName, '');
