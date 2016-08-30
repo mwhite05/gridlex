@@ -35,7 +35,7 @@
 @each $breakpointName, $breakpoint in $breakpoints {
     $width: map-get($breakpoint, width);
     $defaultSpan: map-get($breakpoint, defaultSpan);
-    $columns: map-get($breakpoint, columns);
+    //$columns: map-get($breakpoint, columns);
     $widthEm: 1em * ($width / $root-font-size);
 
     .#{$gridName} > .mod_shrink[class*="#{$colName}-"] {
@@ -63,12 +63,12 @@
         // =================================
         /*     COLUMNS #{$gridName}_#{$breakpointName}    */
         // =================================
-        @include makeCol($gridName, $breakpointName, $colName, $columns, $defaultSpan);
+        @include makeCol($breakpointName, $colName, $defaultSpan);
 
         // =================================================
         /*     GRID BY NUMBER #{$gridName}_#{$breakpointName}    */
         // =================================================
-        @include makeGridByNumber($gridName, $breakpointName, $columns, $defaultSpan);
+        @include makeGridByNumber($breakpointName, $defaultSpan);
 
         // =================================
         ///*     OFFSETS #{$gridName}_#{$breakpointName}    */
@@ -78,6 +78,6 @@
 
 }
 
-@include gridMods($gridName, $colName, '');
+@include gridMods($colName, '');
 
-@include colMods($gridName, $colName, '');
+@include colMods($colName, '');

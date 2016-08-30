@@ -1,6 +1,6 @@
 @import "variables";
 
-@mixin gridMods($gridName, $colName, $breakpointName) {
+@mixin gridMods($colName, $breakpointName) {
     // Determine the prefix to use
     $prefix: if($breakpointName != '', "&.#{$modPrefix}#{$breakpointName}-", "&.#{$modPrefix}");
 
@@ -137,7 +137,7 @@
     }
 }
 
-@mixin colMods($gridName, $colName, $breakpointName) {
+@mixin colMods($colName, $breakpointName) {
 
     // Determine the prefix to use
     $prefix: if($breakpointName != '', "&.#{$modPrefix}#{$breakpointName}-", "&.#{$modPrefix}");
@@ -202,14 +202,19 @@
 }
 
 // Function to generate the grid by number
-@mixin makeGridByNumber($gridName, $breakpointName, $columns, $defaultSpan) {
+@mixin makeGridByNumber($breakpointName, $defaultSpan, $settings:()) {
+
     // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
     [class*="#{$gridName}-"] > .#{$colName},
     [class*="#{$gridName}-#{$breakpointName}-"] > .#{$colName} {
-        flex-basis: 100% / $defaultSpan;
+        //flex-basis: 100% / $defaultSpan;
+        ////flex-grow: 1;
+        ////min-width: 100% / $defaultSpan;
+        //max-width: 100% / $defaultSpan;
+        flex-basis: 100% / (($columns / $defaultSpan));
         //flex-grow: 1;
-        //min-width: 100% / $defaultSpan;
-        max-width: 100% / $defaultSpan;
+        //min-width: 100% / (($columns / $defaultSpan));
+        max-width: 100% / (($columns / $defaultSpan));
     }
 
     @for $i from 1 through $columns {
@@ -221,13 +226,13 @@
         }
     }
 
-    @if $generateGridModifiersPerBreakpoint == true {
-        @include gridMods($gridName, $colName, $breakpointName);
-    }
+    //@if $generateGridModifiersPerBreakpoint == true {
+    //    @include gridMods($colName, $breakpointName);
+    //}
 }
 
 // Function to generate the grid by columns
-@mixin makeCol($gridName, $breakpointName, $colName, $columns, $defaultSpan) {
+@mixin makeCol($breakpointName, $colName, $defaultSpan, $settings:()) {
 
     .#{$gridName},
     [class*="#{$gridName}-"],
@@ -236,10 +241,10 @@
         // Set the default width for any column that we don't specifically recognize for this breakpoint (e.g. default to 100% width on mobile for a col-7 since mobile shouldn't have 7 columns)
         > [class*='col-'],
         > [class*='col-#{$breakpointName}-'] {
-            flex-basis: 100% / $defaultSpan;
+            flex-basis: 100% / (($columns / $defaultSpan));
             //flex-grow: 1;
-            //min-width: 100% / $default;
-            max-width: 100% / $defaultSpan;
+            //min-width: 100% / (($columns / $defaultSpan));
+            max-width: 100% / (($columns / $defaultSpan));
         }
     }
 
@@ -259,9 +264,9 @@
         }
     }
 
-    @if $generateColumnModifiersPerBreakpoint == true {
-        @include colMods($gridName, $colName, $breakpointName);
-    }
+    //@if $generateColumnModifiersPerBreakpoint == true {
+    //    @include colMods($colName, $breakpointName);
+    //}
 }
 
 // Function to generate the offset

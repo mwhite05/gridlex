@@ -5,15 +5,17 @@
 // FONT SIZE BASE FOR YOUR GRID
 $root-font-size: 16; // used in em calculations
 
+$columns: 12;
+
 // <editor-fold desc="BREAKPOINTS">
 // Set each breakpoint key as the CSS name you want to use for that breakpoint (e.g. mobile, tablet, desktop, etc.)
 // Set each breakpoint value as a raw number (DO NO INCLUDE A UNIT e.g use 320, not 320px or 320em)
 $breakpoints: (
-    mobile: (width: 320, columns: 2, defaultSpan: 1), // Max 2 columns if set explicitly. If not specified, col span defaults to 1 columns.
-    tablet: (width: 640, columns: 4, defaultSpan: 2), // Max 4 columns if set explicitly. If not specified, col span defaults to 2 columns.
-    desktop: (width: 769, columns: 6, defaultSpan: 6), // Max 6 columns if set explicitly. If not specified, col span defaults to 6 columns.
-    desktop-hd: (width: 1025, columns: 12, defaultSpan: 12), // Max 12 columns if set explicitly. If not specified, col span defaults to 12 columns.
-    cinema: (width: 1440, columns: 12, defaultSpan: 12), // Max 12 columns if set explicitly. If not specified, col span defaults to 6 columns.
+    mobile: (width: 320, defaultSpan: 12), // Max 2 columns if set explicitly. If not specified, col span defaults to 1 columns.
+    tablet: (width: 640, defaultSpan: 6), // Max 4 columns if set explicitly. If not specified, col span defaults to 2 columns.
+    desktop: (width: 769, defaultSpan: 6), // Max 6 columns if set explicitly. If not specified, col span defaults to 6 columns.
+    desktop-hd: (width: 1025, defaultSpan: 4), // Max 12 columns if set explicitly. If not specified, col span defaults to 12 columns.
+    cinema: (width: 1440, defaultSpan: 4), // Max 12 columns if set explicitly. If not specified, col span defaults to 6 columns.
 );
 //$breakpoints: (
 //    micro: (width: 320, columns: 2, default: 1), // Max 2 columns if set explicitly. If not specified, defaults to 1 column max.
@@ -51,3 +53,12 @@ $generateColumnModifiersPerBreakpoint: true !default;
 
 $breakpoint-names: map-keys($breakpoints) !default;
 $breakpoint-values: map-values($breakpoints) !default;
+
+$settings: (
+    columns: $columns,
+    gridName: $gridName,
+    colName: $colName,
+    modPrefix: $modPrefix,
+    generateGridModifiersPerBreakpoint: $generateGridModifiersPerBreakpoint,
+    generateColumnModifiersPerBreakpoint: $generateColumnModifiersPerBreakpoint,
+);
