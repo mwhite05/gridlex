@@ -13,7 +13,7 @@
 //[class*="#{$gl-colName}_"]
 [class*="#{$colName}-"] {
     box-sizing: border-box;
-    flex: 0 0 auto;
+    //flex: 0 0 auto;
     padding: 0 ($gutter-horizontal/2) $gutter-bottom;
 }
 
@@ -33,7 +33,7 @@
 }
 
 @each $breakpointName, $breakpoint in $breakpoints {
-    $width: map-get($breakpoint, width);
+    $width: map-get($breakpoint, minWidth);
     $defaultSpan: map-get($breakpoint, defaultSpan);
     //$columns: map-get($breakpoint, columns);
     $widthEm: 1em * ($width / $root-font-size);
@@ -53,7 +53,7 @@
     @if ($nextBreakpointNameIndex <= length($breakpoint-names)) {
         $nextBreakpointName: nth($breakpoint-names, $nextBreakpointNameIndex);
         $nextBreakpoint: map-get($breakpoints, $nextBreakpointName);
-        $nextBreakpointWidth: map-get($nextBreakpoint, width);
+        $nextBreakpointWidth: map-get($nextBreakpoint, minWidth);
         $nextBreakpointWidthEm: 1em * (($nextBreakpointWidth - 1) / $root-font-size);
         $mq: "only screen and (min-width: #{$widthEm}) and (max-width: #{$nextBreakpointWidthEm})";
     } @else {
